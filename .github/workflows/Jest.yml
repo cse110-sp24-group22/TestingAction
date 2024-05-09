@@ -24,6 +24,6 @@ jobs:
 
     - name: Install Dependencies
       run: npm install
-      
+
     - name: Unit Tests
-      run: npm test ./__tests__/jest.test.js # the actual testing line
+      run: npm test ./__tests__/jest.test.js
