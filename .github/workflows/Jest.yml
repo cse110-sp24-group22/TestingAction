@@ -6,24 +6,29 @@ on:
       - main
 
 jobs:
-  check-test-js:
+  Check_Jest:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
-      
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Print branch
+      run: git branch -a
+    
     - name: Check if test.js changes are incremental
       run: |
-        if git diff --name-only --diff-filter=AM ${{ github.sha }} HEAD | grep -q __tests__/jest.test.js; then
-          echo "test.js has incremental changes"
+        if git diff --name-only --diff-filter=AM remotes/origin/${{ github.base_ref }} remotes/origin/${{ github.head_ref }} | grep -q '^__test__/jest.test.js$'; then
+          echo "jest.test.js has incremental changes compared to main"
         else
-          echo "test.js does not have incremental changes"
+          echo "jest.test.js does not have incremental changes compared to main"
           exit 1
         fi
 
     - name: Install Dependencies
       run: npm install
-      
+
     - name: Unit Tests
-      run: npm test ./__tests__/jest.test.js # the actual testing line
+      run: npm test
