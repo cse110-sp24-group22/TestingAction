@@ -15,9 +15,6 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Print branch
-      run: git branch -a
-    
     - name: Check if test.js changes are incremental
       run: |
         if git diff --name-only --diff-filter=AM remotes/origin/${{ github.base_ref }} remotes/origin/${{ github.head_ref }} | grep -q '^__test__/jest.test.js$'; then
