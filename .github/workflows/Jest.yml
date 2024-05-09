@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  check-test-js:
+  Check_Jest:
     runs-on: ubuntu-latest
     
     steps:
