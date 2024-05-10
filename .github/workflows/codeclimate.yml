@@ -1,0 +1,61 @@
+# This workflow action is referenced by paambaati
+
+#MIT License
+#Copyright (c) 2019 Ganesh "GP" Prasannah `<me@httgp.com>`
+
+#Permission is hereby granted, free of charge, to any person obtaining a copy
+#of this software and associated documentation files (the "Software"), to deal
+#in the Software without restriction, including without limitation the rights
+#to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#copies of the Software, and to permit persons to whom the Software is
+#furnished to do so, subject to the following conditions:
+
+#The above copyright notice and this permission notice shall be included in all
+#copies or substantial portions of the Software.
+
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#SOFTWARE.
+
+name: CodeClimate Analysis
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  codeclimate-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v6.0.0
+        env:
+          CC_TEST_REPORTER_ID: 46a408e3bc697abed90fa24f7d4ce048f80a104657debcc03768d725be41330f
+        with:
+          coverageCommand: npm run coverage
+          debug: true
+
+      - name: Test & publish code coverage with wildcard (glob) pattern
+        uses: paambaati/codeclimate-action@v6.0.0
+        env:
+          CC_TEST_REPORTER_ID: 46a408e3bc697abed90fa24f7d4ce048f80a104657debcc03768d725be41330f
+        with:
+          coverageCommand: yarn run coverage
+          coverageLocations: |
+            ${{github.workspace}}/*.lcov:lcov
+
+      - name: Test & publish code coverage with Jacoco
+        uses: paambaati/codeclimate-action@v6.0.0
+        env:
+          # Set CC_TEST_REPORTER_ID as secret of your repo
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
+        with:
+          # The report file must be there, otherwise Code Climate won't find it
+          coverageCommand: mvn test
+          coverageLocations: ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
