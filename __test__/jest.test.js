@@ -23,3 +23,5 @@ test('adds 3 + 3 to equal 6', () => {
   expect(3 + 3).toBe(6);
 });
 
+test('adds 4 + 4 to equal 8', () => { expect(4 + 4).toBe(8); });
+
