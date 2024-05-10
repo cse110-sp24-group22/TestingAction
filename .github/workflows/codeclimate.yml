@@ -1,24 +1,38 @@
-name: Code Coverage
+name: CodeClimate Analysis
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
-  build:
-    name: Test & Publish Code Coverage
+  codeclimate-analysis:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v6.0.0
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install CodeClimate CLI
+        run: |
+          curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz
+          sudo mv codeclimate-* /usr/local/bin/codeclimate
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run CodeClimate analysis
         env:
-          # Set CC_TEST_REPORTER_ID as secret of your repo
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: "${{github.workspace}}/src/main/java"
+        run: |
+          /usr/local/bin/codeclimate prepare
+          /usr/local/bin/codeclimate analyze -f json > codeclimate.json
+
+      - name: Upload report to CodeClimate
+        uses: actions/upload-artifact@v2
         with:
-          # The report file must be there, otherwise Code Climate won't find it
-          coverageCommand: yarn run coverage
-          coverageLocations: |
-            ${{github.workspace}}/*.lcov:lcov
+          name: codeclimate-report
+          path: codeclimate.json
+
