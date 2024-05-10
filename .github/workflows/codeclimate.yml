@@ -35,7 +35,3 @@ jobs:
         with:
           name: codeclimate-report
           path: codeclimate.json
-        with:
-          # The report file must be there, otherwise Code Climate won't find it
-          coverageCommand: mvn test
-          coverageLocations: ${{github.workspace}}/target/site/jacoco/jacoco.xml:jacoco
