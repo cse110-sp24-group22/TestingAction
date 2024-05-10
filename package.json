@@ -3,7 +3,8 @@
       "jest": "^29.7.0"
     },
     "scripts": {
-      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+      "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+      "coverage": "pnpm run test --no-disable-coverage --allow-incomplete-coverage --coverage-report=lcovonly"
     },
     "type": "module",
     "jest": {
