@@ -1,15 +1,37 @@
-# .github/workflows/test.yml
-name: test
-on: pull_request
+name: Code Coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  test:
+  build:
+    name: Test & Publish Code Coverage
     runs-on: ubuntu-latest
+
     steps:
-      - uses: remarkablemark/setup-codeclimate@v2
-      - run: |
-          cc-test-reporter before-build
-          npm test
-          cc-test-reporter after-build --exit-code $?
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests and generate coverage
+        run: npm run coverage
+
+      - name: Publish code coverage to Code Climate
+        uses: paambaati/codeclimate-action@v6.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: npm run coverage
+          debug: true
+
+
 
