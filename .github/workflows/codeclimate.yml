@@ -9,29 +9,13 @@ on:
       - main
 
 jobs:
-  codeclimate-analysis:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install CodeClimate CLI
-        run: |
-          curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz
-          sudo mv codeclimate-* /usr/local/bin/codeclimate
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run CodeClimate analysis
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        run: |
-          codeclimate prepare
-          codeclimate analyze -f json > codeclimate.json
-
-      - name: Upload report to CodeClimate
-        uses: actions/upload-artifact@v2
-        with:
-          name: codeclimate-report
-          path: codeclimate.json
+ codeclimate-analysis:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Test & publish code coverage
+    uses: paambaati/codeclimate-action@v6.0.0
+    env:
+      CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+    with:
+      coverageCommand: npm run coverage
+      debug: true
