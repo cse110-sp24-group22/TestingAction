@@ -1,38 +1,15 @@
-name: CodeClimate Analysis
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+# .github/workflows/test.yml
+name: test
+on: pull_request
 jobs:
-  codeclimate-analysis:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install CodeClimate CLI
-        run: |
-          curl -L https://github.com/codeclimate/codeclimate/archive/master.tar.gz | tar xvz
-          sudo mv codeclimate-* /usr/local/bin/codeclimate
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run CodeClimate analysis
+      - uses: remarkablemark/setup-codeclimate@v2
+      - run: |
+          cc-test-reporter before-build
+          npm test
+          cc-test-reporter after-build --exit-code $?
         env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        run: |
-          /usr/local/bin/codeclimate prepare
-          /usr/local/bin/codeclimate analyze -f json > codeclimate.json
-
-      - name: Upload report to CodeClimate
-        uses: actions/upload-artifact@v2
-        with:
-          name: codeclimate-report
-          path: codeclimate.json
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
