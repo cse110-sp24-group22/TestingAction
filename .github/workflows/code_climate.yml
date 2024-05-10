@@ -25,7 +25,7 @@ jobs:
 
       - name: Run CodeClimate analysis
         env:
-          CC_TEST_REPORTER_ID: 46a408e3bc697abed90fa24f7d4ce048f80a104657debcc03768d725be41330f
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
         run: |
           codeclimate prepare
           codeclimate analyze -f json > codeclimate.json
