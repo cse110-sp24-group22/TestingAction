@@ -24,6 +24,9 @@ jobs:
       - name: Run tests and generate coverage
         run: npm run coverage
 
+      - name: List contents of coverage directory
+        run: ls -R coverage
+
       - name: Print coverage report
         run: cat coverage/lcov.info
 
