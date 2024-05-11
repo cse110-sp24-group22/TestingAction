@@ -24,6 +24,9 @@ jobs:
       - name: Run tests and generate coverage
         run: npm run coverage
 
+      - name: Print coverage report
+        run: cat coverage/lcov.info
+
       - name: Publish code coverage to Code Climate
         uses: paambaati/codeclimate-action@v6.0.0
         env:
