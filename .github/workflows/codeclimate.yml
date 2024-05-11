@@ -39,3 +39,19 @@ jobs:
         run: ./cc-test-reporter format-coverage -t lcov lcov.info && ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+      - name: Check Code Climate score
+        run: |
+          # Get the Code Climate score using the API
+          score=$(curl -s -u "${{ secrets.CC_API_USER }}:${{ secrets.CC_API_TOKEN }}" "https://api.codeclimate.com/v1/repos/${{ secrets.CC_REPO_ID }}/snapshot" | jq -r '.last_snapshot.ratings[0].measure.value')
+
+          # Set minimum score threshold
+          min_score=80
+
+          # Check if the score is below the minimum threshold
+          if (( $(echo "$score < $min_score" | bc -l) )); then
+            echo "Code Climate score is below the minimum threshold of $min_score"
+            exit 1
+          else
+            echo "Code Climate score meets the minimum threshold of $min_score"
+          fi
