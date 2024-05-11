@@ -35,9 +35,11 @@ jobs:
       #     yarn install
       #     yarn build
 
-      - uses: paambaati/codeclimate-action@v4
+
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v6.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: yarn run coverage
+          coverageCommand: npm run test
           debug: true
