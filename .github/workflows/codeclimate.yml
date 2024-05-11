@@ -36,9 +36,7 @@ jobs:
         run: cat coverage/lcov.info
 
       - name: Publish code coverage to Code Climate
-        uses: codeclimate/github-action@v1.0.5
-        with:
-          coverageCommand: npm run coverage
+        run: ./cc-test-reporter format-coverage -t lcov coverage/lcov.info && ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
 
