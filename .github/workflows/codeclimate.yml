@@ -33,10 +33,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - run: |
-          npm install -g yarn
-          yarn install
-          yarn build
+      # - run: |
+      #     npm install -g yarn
+      #     yarn install
+      #     yarn build
 
       - uses: paambaati/codeclimate-action@v4
         env:
