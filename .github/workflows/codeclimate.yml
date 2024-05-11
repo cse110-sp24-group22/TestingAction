@@ -50,7 +50,7 @@ jobs:
 
           # Check if the score is below the minimum threshold
           if (( $(echo "$score < $min_score" | bc -l) )); then
-            echo "Code Climate score is below the minimum threshold of $min_score"
+            echo "Code Climate score is below the minscore: $min_score"
             exit 1
           else
             echo "Code Climate score meets the minimum threshold of $min_score"
