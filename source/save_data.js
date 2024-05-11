@@ -4,7 +4,7 @@
  * @param data {Object.<string, string>} - Data to save, a map between keys and values.
  */
 export function saveData(data) {
-    localStorage.setItem('data', JSON.stringify(data));
+  localStorage.setItem("data", JSON.stringify(data));
 }
 
 /**
@@ -12,9 +12,9 @@ export function saveData(data) {
  * @returns {Object.<string, string> | undefined} - Data from local storage.
  */
 export function getData() {
-    const data = localStorage.getItem('data');
-    if (data) {
-        return JSON.parse(data);
-    }
-    return undefined;
+  const data = localStorage.getItem("data");
+  if (data) {
+    return JSON.parse(data);
+  }
+  return undefined;
 }
