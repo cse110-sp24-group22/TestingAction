@@ -24,8 +24,7 @@ jobs:
         run: npm install
 
       - name: Run tests and generate coverage
-        uses: paambaati/codeclimate-action@v6.0.0
-        #run: npm run coverage
+        run: npm run coverage
 
       - name: Publish code coverage to Code Climate
         uses: paambaati/codeclimate-action@v6.0.0
