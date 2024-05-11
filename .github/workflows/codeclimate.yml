@@ -1,4 +1,4 @@
-name: Code Coverage
+name: Codeclimate quality
 
 on:
   pull_request:
@@ -6,9 +6,7 @@ on:
       - main
 
 jobs:
-  build:
-            
-    name: Test & Publish Code Coverage
+  codeclimate:
     runs-on: ubuntu-latest
 
     steps:
