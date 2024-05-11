@@ -30,7 +30,6 @@ test("adds 4 + 5 to equal 9", () => {
   expect(4 + 5).toBe(9);
 });
 
-
 test("adds 1 + 2 to equal 3", () => {
   expect(1 + 2).toBe(3);
 });
