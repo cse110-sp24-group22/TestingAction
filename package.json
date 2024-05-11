@@ -10,7 +10,5 @@
     "jest": {
       "transform": {},
       "verbose": true,
-      "collectCoverage": true,
-      "coverageReporters": ["lcov"]
     }
   }
