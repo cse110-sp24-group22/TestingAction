@@ -20,14 +20,22 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: Install cc-test-reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
 
       - name: Run tests and generate coverage
         run: npm run coverage
 
+      - name: List contents of coverage directory
+        run: ls -R coverage
+
+      - name: Print coverage report
+        run: cat coverage/lcov.info
+
       - name: Publish code coverage to Code Climate
-        uses: paambaati/codeclimate-action@v6.0.0
+        run: ./cc-test-reporter format-coverage -t lcov lcov.info && ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: npm run coverage
-          debug: true
