@@ -39,4 +39,4 @@ jobs:
         run: ./cc-test-reporter format-coverage -t lcov lcov.info && ./cc-test-reporter upload-coverage
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          CC_API_TOKEN: 3666859b62c6d443dae174689ca0c11c041d01fd
+          CC_API_TOKEN: ${{ secrets.CC_API_TOKEN }}
