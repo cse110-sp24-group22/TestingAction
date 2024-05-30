@@ -17,7 +17,6 @@ jobs:
         with:
           source_dir: ./src/scripts
           output_dir: ./docs
-          front_page: ./docs/JSdoc.md
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
