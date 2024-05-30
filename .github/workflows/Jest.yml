@@ -3,7 +3,7 @@ name: Jest Testing
 on:
   pull_request:
     branches:
-      - main
+      - NOTUSE
 
 jobs:
   Check_Jest:

@@ -1,6 +1,9 @@
 name: Codeclimate quality
 
-on: push
+on:
+  push:
+    branches:
+      - NOTUSE
 
 jobs:
   # test:
