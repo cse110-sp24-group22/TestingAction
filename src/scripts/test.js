@@ -18,4 +18,3 @@ function mul(journal, number) {}
  * @param {*} number
  */
 function minus(journal, number) {}
-
