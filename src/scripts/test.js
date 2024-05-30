@@ -11,3 +11,11 @@ function add(journal, number) {}
  * @param {*} number
  */
 function mul(journal, number) {}
+
+/**
+ * I am happy with JS doc
+ * @param {*} journal
+ * @param {*} number
+ */
+function minus(journal, number) {}
+
