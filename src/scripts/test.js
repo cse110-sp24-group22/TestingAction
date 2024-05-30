@@ -1,8 +1,20 @@
 /**
  * I am happy with JS doc
- * @param {*} journal 
- * @param {*} number 
+ * @param {*} journal
+ * @param {*} number
  */
-function add (journal, number){
+function add(journal, number) {}
 
-}
+/**
+ * I am happy with JS doc
+ * @param {*} journal
+ * @param {*} number
+ */
+function mul(journal, number) {}
+
+/**
+ * I am happy with JS doc
+ * @param {*} journal
+ * @param {*} number
+ */
+function minus(journal, number) {}
