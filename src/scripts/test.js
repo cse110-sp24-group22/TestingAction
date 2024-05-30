@@ -6,3 +6,12 @@
 function add (journal, number){
 
 }
+
+/**
+ * Hope it works
+ * @param {*} journal 
+ * @param {*} number 
+ */
+function minus (journal, number){
+
+}
