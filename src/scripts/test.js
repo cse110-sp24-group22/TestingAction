@@ -6,3 +6,12 @@
 function add (journal, number){
 
 }
+
+/**
+ * I am not happy with JS doc
+ * @param {*} journal 
+ * @param {*} number 
+ */
+function minus (journal, number){
+
+}
