@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+        - main
 
 jobs:
   deploy:
@@ -17,15 +20,9 @@ jobs:
           source_dir: ./src/scripts
           output_dir: ./docs
 
-      - name: Configure Git
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
       - name: Commit and push changes
-        run: |
-          git add ./docs
-          git commit -m "Update JS documentation"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Update JS Docs
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
