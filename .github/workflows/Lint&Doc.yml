@@ -25,6 +25,7 @@ jobs:
             commit_message: "Code Formatted by GitHub Action"
   
   JSDoc-generation:
+    needs: prettier-linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
