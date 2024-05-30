@@ -17,8 +17,6 @@ jobs:
         with:
           source_dir: ./src/scripts
           output_dir: ./docs
-          config_file: conf.json
-          template: minami
           front_page: ./docs/JSdoc.md
 
       - name: Deploy
