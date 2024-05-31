@@ -12,3 +12,4 @@ jobs:
       uses: foo-software/lighthouse-check-action@master
       with:
         urls: 'https://cse110-sp24-group22.github.io/TestingAction/'
+    - run: 'node --trace-warnings' 
