@@ -4,19 +4,12 @@ on:
     branches:
       - main
 jobs:
-  lighthouse:
+  lighthouseci:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Lighthouse
-      uses: foo-software/lighthouse-check-action@master
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        urls: 'https://cse110-sp24-group22.github.io/TestingAction/'
-        device: 'desktop'
-    - name: Verify Lighthouse Check results
-      uses: foo-software/lighthouse-check-status-action@master
-      with:
-        lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
-        minAccessibilityScore: "80"
-        minBestPracticesScore: "80"
-        minPerformanceScore: "80"
+        node-version: 18
+    - run: npm install -g @lhci/cli@0.13.x
+    - run: lhci autorun
