@@ -4,7 +4,7 @@
     },
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "build": "set JEKYLL_ENV=production | jekyll build"
+        "build": "bundle exec jekyll serve"
     },
     "type": "module",
     "jest": {
