@@ -12,4 +12,11 @@ jobs:
       uses: foo-software/lighthouse-check-action@master
       with:
         urls: 'https://cse110-sp24-group22.github.io/TestingAction/'
-    - run: 'node --trace-warnings' 
+        device: 'desktop'
+    - name: Verify Lighthouse Check results
+      uses: foo-software/lighthouse-check-status-action@master
+      with:
+        lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+        minAccessibilityScore: "100"
+        minBestPracticesScore: "100"
+        minPerformanceScore: "100"
