@@ -4,14 +4,11 @@
     },
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "build": "npm run jekyll serve"
+        "build": "http-server -p 8080"
     },
     "type": "module",
     "jest": {
         "transform": {},
         "verbose": true
-    },
-    "dependencies": {
-        "jekyll": "^3.0.0-beta1"
     }
 }
