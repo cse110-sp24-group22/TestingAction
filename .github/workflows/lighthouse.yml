@@ -1,6 +1,9 @@
 name: Lighthouse CI
 on:
   pull_request:
+    types: [synchronize]
+    branches: 
+      - main
 jobs:
   lighthouseci:
     runs-on: ubuntu-latest
