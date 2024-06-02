@@ -2,7 +2,6 @@
   "ci": {
     "collect": {
       "url": ["http://localhost:8080/"],
-      "startServerCommand": "rails server -e production",
       "settings": {
         "preset": "desktop"
       }
