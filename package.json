@@ -4,8 +4,7 @@
     },
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "build": "http-server -p 8080 > /dev/null 2>&1 & echo $! > server.pid",
-        "serve:lhci": "NODE_ENV=production npm run http-server -p 8080"
+        "build": "http-server -p 8080 </dev/null"
     },
     "type": "module",
     "jest": {
