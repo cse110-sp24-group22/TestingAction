@@ -1,12 +1,6 @@
 name: Lighthouse CI
 on:
-  workflow_run:
-    workflows: ["Prettier Linting & JS Doc Generation", "Codeclimate quality"]
-    types:
-      - completed
   pull_request:
-    branches:
-      - main
 jobs:
   lighthouseci:
     runs-on: ubuntu-latest
