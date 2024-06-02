@@ -1,9 +1,8 @@
 name: Lighthouse CI
 on:
-  pull_request:
-    types: [synchronize]
-    branches: 
-      - main
+  push:
+    branches:
+      - NOTUSE
 jobs:
   lighthouseci:
     runs-on: ubuntu-latest
