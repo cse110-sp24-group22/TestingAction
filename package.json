@@ -4,7 +4,8 @@
     },
     "scripts": {
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-        "build": "http-server -p 8080 </dev/null"
+        "build-home": "http-server ./docs/global.html -p 8080 </dev/null",
+        "build-list": "http-server ./docs/index.html -p 8080 </dev/null"
     },
     "type": "module",
     "jest": {

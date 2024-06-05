@@ -12,6 +12,9 @@ jobs:
       with:
         node-version: 18
     - run: npm install && npm install -g @lhci/cli@0.13.x && npm install http-server
-    - run: nohup npm run build &
+    - run: nohup npm run build-home &
+    - run: sleep 5
+    - run: lhci autorun
+    - run: nohup npm run build-list &
     - run: sleep 5
     - run: lhci autorun
