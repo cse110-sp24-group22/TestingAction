@@ -12,10 +12,5 @@
     "jest": {
         "transform": {},
         "verbose": true
-    },
-    "dependencies": {
-        "webpack": "^5.91.0",
-        "webpack-dev-server": "^5.0.4",
-        "yarn": "^1.22.22"
     }
 }
