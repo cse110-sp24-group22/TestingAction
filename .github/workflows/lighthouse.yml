@@ -12,9 +12,9 @@ jobs:
       with:
         node-version: 18
     - run: npm install && npm install -g @lhci/cli@0.13.x && npm install http-server
-    - run: nohup http-server ./src/html/home.html -p 8080 &
+    - run: http-server ./src/html/home.html -p 8080 &
     - run: sleep 5
     - run: lhci autorun
-    - run: nohup http-server ./src/html/home.html -p 8080 &
+    - run: http-server ./src/html/home.html -p 8080 &
     - run: sleep 5
     - run: lhci autorun
