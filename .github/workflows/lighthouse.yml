@@ -14,9 +14,9 @@ jobs:
     - run: npm install
     - run: npm install -g @lhci/cli@0.13.x
     - run: npm install -g http-server
-    - run: http-server ./src/html/home.html -p 8080 &
+    - run: http-server -p 8080 &
     - run: sleep 5
     - run: lhci autorun
-    - run: http-server ./src/html/home.html -p 8080 &
-    - run: sleep 5
-    - run: lhci autorun
+    #- run: http-server ./src/html/home.html -p 8080 &
+    #- run: sleep 5
+    #- run: lhci autorun

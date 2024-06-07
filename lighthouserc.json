@@ -1,7 +1,7 @@
 {
   "ci": {
     "collect": {
-      "url": ["http://127.0.0.1:8080/"],
+      "url": ["http://127.0.0.1:8080/src/html/home.html", "http://127.0.0.1:8080/src/html/index.html"],
       "settings": {
         "preset": "desktop"
       }
